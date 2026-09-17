@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Rajdhani", "Inter", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-void: #050b14;
+  --color-void-2: #081321;
+  --color-panel: #0c1929;
+  --color-panel-raised: #11243a;
+  --color-panel-hi: #18334e;
+  --color-line: #21415f;
+  --color-line-soft: #162d45;
+
+  --color-ink: #f4f9ff;
+  --color-ink-dim: #b9cde0;
+  --color-ink-mute: #7892aa;
+
+  --color-signal: #1298ed;
+  --color-signal-dim: #0b65a8;
+  --color-hazard: #ff3d3d;
+  --color-live: #2fe0a8;
+  --color-data: #4dc8e0;
+
+  --color-rank-gold: #e8b400;
+  --color-rank-silver: #c7cdd6;
+  --color-rank-bronze: #c97a3d;
+
+  --background-glow-blue: rgba(18, 152, 237, 0.18);
+  --background-glow-cyan: rgba(77, 200, 224, 0.11);
+  --background-glow-white: rgba(255, 255, 255, 0.045);
+}
+
+[data-theme='light'] {
+  --color-void: #ffffff;
+  --color-void-2: #f4f8fc;
+  --color-panel: #ffffff;
+  --color-panel-raised: #eef6fd;
+  --color-panel-hi: #dbeafa;
+  --color-line: #c8d9e8;
+  --color-line-soft: #e1ebf4;
+
+  --color-ink: #07111d;
+  --color-ink-dim: #334b62;
+  --color-ink-mute: #60788e;
+
+  --background-glow-blue: rgba(18, 152, 237, 0.09);
+  --background-glow-cyan: rgba(77, 200, 224, 0.08);
+  --background-glow-white: rgba(18, 63, 102, 0.035);
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  cursor: crosshair !important;
+}
+
+.tactical-background {
+  background-color: var(--color-void);
+  background-image:
+    radial-gradient(circle at 12% 8%, var(--background-glow-blue), transparent 28rem),
+    radial-gradient(circle at 88% 32%, var(--background-glow-cyan), transparent 24rem),
+    radial-gradient(circle at 52% 100%, var(--background-glow-white), transparent 30rem),
+    linear-gradient(to right, color-mix(in srgb, var(--color-signal) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-signal) 8%, transparent) 1px, transparent 1px);
+  background-size: auto, auto, auto, 84px 84px, 84px 84px;
+  background-attachment: fixed;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.tabular { font-variant-numeric: tabular-nums; }
+.text-shadow-glow { text-shadow: 0 0 30px rgba(18, 152, 237, 0.35); }
